@@ -9,28 +9,32 @@ var pike = {
   minCustomers: 23,
   maxCustomers: 65,
   avgSale: 6.3,
+  customerPerHour: function() {
+    return Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1)) + this.minCustomers;
+  },
+
   render: function() {
 
     for (var i = 0; i < hours.length; i++) {
-      var elHours = document.getElementById('hours');
+      var elPike = document.getElementById('pike');
       var liEl = document.createElement('li');
-      liEl.textContent = hours[i];
-      elHours.appendChild(liEl);
+      liEl.textContent = hours[i] + ' : ' + this.customerPerHour() + ' cookies';
+      elPike.appendChild(liEl);
     }
   }
 };
 
 pike.render();
 
-var seaTac = {
-  storeName: 'SeaTac Airport',
-  minCustomers: 3,
-  maxCustomers: 24,
-  avgSale: 1.2,
-  render: function() {
-
-    for var i = 0; i < hours.length; i++) {
-
-    }
-  }
-}
+// var seaTac = {
+//   storeName: 'SeaTac Airport',
+//   minCustomers: 3,
+//   maxCustomers: 24,
+//   avgSale: 1.2,
+//   render: function() {
+//
+//     for var i = 0; i < hours.length; i++) {
+//
+//     }
+//   }
+// }
