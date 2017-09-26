@@ -11,6 +11,8 @@ function Store(storeName, minCustomers, maxCustomers, avgSale) {
   this.minCustomers = minCustomers;
   this.maxCustomers = maxCustomers;
   this.avgSale = avgSale;
+  this.dailySales = 0;
+  this.hourlySales = [];
   allStores.push(this);
 }
 
@@ -18,9 +20,38 @@ Store.prototype.customerPerHour = function() {
   return Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1)) + this.minCustomers;
 };
 
+Store.prototype.hourlyTransactions = function() {
+  var numberOfCustomers = this.customerPerHour();
+  this.hourlySales.push(Math.round(numberOfCustomers * this.avgSale));
+};
+
+Store.prototype.dailyTransactions = function() {
+  for(i in this.hourlySales) {
+    this.dailySales += this.hourlySales[i];
+  }
+};
+
 Store.prototype.render = function() {
 
+  var trEl = document.createElement('tr');
+
+  var tdEl = document.createElement('td');
+  tdEl.textContent = this.name;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.hourlySales[i] + ' cookies';
+  trEl.appendChild(tdEl);
+
+  storeTable.appendChild(trEl);
+
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = 'Daily Totals';
+  trEl.appendChild(tdEl);
+
 };
+
 
 new Store('1st and Pike', 23, 65, 6.3);
 new Store('SeaTac Airport', 3, 24, 1.2);
@@ -30,126 +61,34 @@ new Store('Alki', 2, 16, 4.6);
 console.log(allStores);
 
 function makeHeaderRow() {
-  // create tr
   var trEl = document.createElement('tr');
 
-  // create td
   var thEl = document.createElement('th');
-  // give td content
   thEl.textContent = 'Store';
-  // append the td
   trEl.appendChild(thEl);
 
-  // create td
-  var thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '6:00AM';
-  // append the td
-  trEl.appendChild(thEl);
+  for(var i in hours) {
+    thEl = document.createElement('th');
+    thEl.textContent = hours[i];
+    trEl.appendChild(thEl);
 
-  // create td
+    storeTable.appendChild(trEl);
+  }
+
   thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '7:00AM';
-  // append the td
+  thEl.textContent = 'Daily Totals';
   trEl.appendChild(thEl);
 
-  // create td
-  thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '8:00AM';
-  // append the td
-  trEl.appendChild(thEl);
-
-  // create td
-  thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '9:00AM';
-  // append the td
-  trEl.appendChild(thEl);
-
-  // create td
-  thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '10:00AM';
-  // append the td
-  trEl.appendChild(thEl);
-
-  // create td
-  thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '11:00AM';
-  // append the td
-  trEl.appendChild(thEl);
-
-  // create td
-  thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '12:00PM';
-  // append the td
-  trEl.appendChild(thEl);
-
-  // create td
-  thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '1:00PM';
-  // append the td
-  trEl.appendChild(thEl);
-
-  // create td
-  thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '2:00PM';
-  // append the td
-  trEl.appendChild(thEl);
-
-  // create td
-  thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '3:00PM';
-  // append the td
-  trEl.appendChild(thEl);
-
-  // create td
-  thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '4:00PM';
-  // append the td
-  trEl.appendChild(thEl);
-
-  // create td
-  thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '5:00PM';
-  // append the td
-  trEl.appendChild(thEl);
-
-  // create td
-  thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '6:00PM';
-  // append the td
-  trEl.appendChild(thEl);
-
-  // create td
-  thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '7:00PM';
-  // append the td
-  trEl.appendChild(thEl);
-
-  // create td
-  thEl = document.createElement('th');
-  // give td content
-  thEl.textContent = '8:00PM';
-  // append the td
-  trEl.appendChild(thEl);
-
-  // append the tr to the table
-  storeTable.appendChild(trEl);
+}
+function storeRows() {
+  for(var i in allStores){
+    allStores[i].render();
+  }
 }
 
+// Now we need to call our functions: the one for the header row, and the one for generating the individual cat rows
 makeHeaderRow();
+storeRows();
 
 // //1st and Pike Store
 // var pike = {

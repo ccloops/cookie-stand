@@ -7,25 +7,29 @@
 
 
 * {
-  font-family: 'Baloo', cursive;
+  font-family: 'Caveat',
 }
 
 body {
-  background: #ccc;
+  background-color: black;
+  color: salmon;
 }
 
 table {
-	border: 10px solid black;
+	border: 10px solid white;
+  margin: 5px;
 }
 
 td {
 	padding: 10px;
-	border-radius: 15px;
+	border-radius: 70%;
   border: 1px solid black;
   background: white;
 }
 
 th {
-	background-color: navy;
-	color: white;
+	background-color: salmon;
+	color: black;
+  padding: 10px;
+  border-radius: 70%;
 }
