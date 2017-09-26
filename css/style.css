@@ -10,6 +10,10 @@ h1 {
   font-size: 70px;
 }
 
+nav {
+  text-align: center;
+}
+
 li {
   display: inline;
   background-color: white;

@@ -1,18 +1,7 @@
-/*body {
-  color: salmon;
-  background-color: black;
-  font-size: 25px;
-  font-family: Caveat;
-}*/
-
-
-* {
-  font-family: 'Caveat',
-}
-
 body {
   background-color: black;
   color: salmon;
+  font-family: 'Caveat',
 }
 
 img {
@@ -23,6 +12,20 @@ img {
 
 h1 {
   text-align: center;
+}
+
+nav {
+  text-align: center;
+  margin: 20px;
+}
+
+li {
+  display: inline;
+  background-color: white;
+  padding: 1%;
+  font-size: 20px;
+  margin: 0 auto;
+  font-family: 'Caveat',
 }
 
 table {
