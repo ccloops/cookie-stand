@@ -1,0 +1,44 @@
+body {
+  color: salmon;
+  background-color: black;
+  text-align: center;
+  font-family: Caveat;
+}
+
+h1 {
+  color: pink;
+  font-size: 70px;
+}
+
+li {
+  display: inline;
+  background-color: white;
+  padding: 2%;
+  font-size: 30px;
+}
+
+img {
+  padding: 2px;
+  margin: 2%;
+}
+
+.hours {
+  background-color: salmon;
+  border-radius: 50%;
+  color: black;
+  font-size: 30px;
+  padding: 5px;
+}
+h3 {
+  font-size: 30px;
+}
+
+p {
+  color: white;
+  font-size: 18px;
+}
+
+#secret {
+  font-size: 25px;
+  color: black;
+}
