@@ -21,12 +21,14 @@ Store.prototype.customerPerHour = function() {
 };
 
 Store.prototype.hourlyTransactions = function() {
-  var numberOfCustomers = this.customerPerHour();
-  this.hourlySales.push(Math.round(numberOfCustomers * this.avgSale));
+  for(var i in hours) {
+    var numberOfCustomers = this.customerPerHour();
+    this.hourlySales.push(Math.round(numberOfCustomers * this.avgSale));
+  }
 };
 
 Store.prototype.dailyTransactions = function() {
-  for(i in this.hourlySales) {
+  for(var i in this.hourlySales) {
     this.dailySales += this.hourlySales[i];
   }
 };
@@ -35,21 +37,21 @@ Store.prototype.render = function() {
 
   var trEl = document.createElement('tr');
 
-  var tdEl = document.createElement('td');
-  tdEl.textContent = this.name;
-  trEl.appendChild(tdEl);
+  var thEl = document.createElement('th');
+  thEl.textContent = this.storeName;
+  trEl.appendChild(thEl);
 
-  tdEl = document.createElement('td');
-  tdEl.textContent = this.hourlySales[i] + ' cookies';
-  trEl.appendChild(tdEl);
+  for(var i in this.hourlySales) {
+    var tdEl = document.createElement('td');
+    tdEl.textContent = this.hourlySales[i] + ' cookies';
+    trEl.appendChild(tdEl);
+  }
+
+  thEl = document.createElement('th');
+  thEl.textContent = this.dailySales;
+  trEl.appendChild(thEl);
 
   storeTable.appendChild(trEl);
-
-
-  tdEl = document.createElement('td');
-  tdEl.textContent = 'Daily Totals';
-  trEl.appendChild(tdEl);
-
 };
 
 
@@ -80,15 +82,17 @@ function makeHeaderRow() {
   trEl.appendChild(thEl);
 
 }
-function storeRows() {
-  for(var i in allStores){
-    allStores[i].render();
-  }
+makeHeaderRow();
+
+for (var i in allStores) {
+  allStores[i].hourlyTransactions();
+  allStores[i].dailyTransactions();
+  allStores[i].render();
 }
 
 // Now we need to call our functions: the one for the header row, and the one for generating the individual cat rows
-makeHeaderRow();
-storeRows();
+
+
 
 // //1st and Pike Store
 // var pike = {
