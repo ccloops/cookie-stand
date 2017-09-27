@@ -21,7 +21,7 @@ Store.prototype.customerPerHour = function() {
 };
 
 Store.prototype.hourlyTransactions = function() {
-  for(var i in hours) {
+  for(var i = 0; i < hours.length; i++) {
     var numberOfCustomers = this.customerPerHour();
     this.hourlySales.push(Math.round(numberOfCustomers * this.avgSale));
   }
