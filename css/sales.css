@@ -48,6 +48,11 @@ th {
   border-radius: 70%;
 }
 
+input[type=number] {
+  width: 50px;
+
+}
+
 button:hover {
   background-color: salmon;
 }

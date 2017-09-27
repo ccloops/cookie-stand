@@ -135,6 +135,7 @@ function handleNewStoreSubmit(event) {
   if (!event.target.getStoreName.value || !event.target.getMinCustomers.value || !event.target.getMaxCustomers.value || !event.target.getAvgSale.value) {
     return alert('Please fill in all form fields!');
   }
+
   var newStoreName = event.target.getStoreName.value;
   var newMinCustomers = parseInt(event.target.getMinCustomers.value);
   var newMaxCustomers = parseInt(event.target.getMaxCustomers.value);
