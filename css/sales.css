@@ -47,3 +47,7 @@ th {
   padding: 10px;
   border-radius: 70%;
 }
+
+button:hover {
+  background-color: salmon;
+}

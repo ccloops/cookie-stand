@@ -5,6 +5,7 @@ var allStores = [];
 var storeTable = document.getElementById('store');
 var allStoreTotals = [];
 var totalTurtle = 0;
+var newCookieStore = document.getElementById('new-store');
 
 function Store(storeName, minCustomers, maxCustomers, avgSale) {
   this.storeName = storeName;
@@ -99,6 +100,7 @@ function columnSum() {
 }
 
 function totalTableSum() {
+  totalTurtle = 0;
   for (var k in allStoreTotals) {
     totalTurtle += allStoreTotals[k];
   }
@@ -106,6 +108,7 @@ function totalTableSum() {
 
 function makeFooterRow() {
   var trEl = document.createElement('tr');
+  trEl.setAttribute('id', 'footer');
 
   var thEl = document.createElement('th');
   thEl.textContent = 'All Stores Hourly Totals';
@@ -124,6 +127,38 @@ function makeFooterRow() {
 
   storeTable.appendChild(trEl);
 }
+
+function handleNewStoreSubmit(event) {
+  allStoreTotals = [];
+  event.preventDefault();
+  var footerRow = document.getElementById('footer');
+  if (!event.target.getStoreName.value || !event.target.getMinCustomers.value || !event.target.getMaxCustomers.value || !event.target.getAvgSale.value) {
+    return alert('Please fill in all form fields!');
+  }
+  var newStoreName = event.target.getStoreName.value;
+  var newMinCustomers = parseInt(event.target.getMinCustomers.value);
+  var newMaxCustomers = parseInt(event.target.getMaxCustomers.value);
+  var newAvgSale = parseInt(event.target.getAvgSale.value);
+  new Store(newStoreName, newMinCustomers, newMaxCustomers, newAvgSale);
+
+  event.target.getStoreName.value = null;
+  event.target.getMinCustomers.value = null;
+  event.target.getMaxCustomers.value = null;
+  event.target.getAvgSale.value = null;
+
+  storeTable.removeChild(footerRow);
+
+  allStores[allStores.length - 1].hourlyTransactions();
+  allStores[allStores.length - 1].dailyTransactions();
+  allStores[allStores.length - 1].render();
+
+  columnSum();
+  totalTableSum();
+  makeFooterRow();
+
+}
+
+newCookieStore.addEventListener('submit', handleNewStoreSubmit);
 
 makeHeaderRow();
 
