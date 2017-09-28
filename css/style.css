@@ -52,8 +52,32 @@ p {
 }
 
 .location {
+  background-color: white;
+  color: black;
   width: 300px;
   float: left;
   margin: 10px;
   border: 1px solid white;
+  height: 450px;
+}
+.location>p {
+  color:black;
+}
+
+.merch {
+border: 1px solid white;
+width: 450px;
+float: left;
+margin: 10px;
+height: 350px;
+}
+
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+  text-decoration: none;
 }
