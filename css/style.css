@@ -3,6 +3,7 @@ body {
   background-color: black;
   text-align: center;
   font-family: Caveat;
+  margin: 0 auto;
 }
 
 h1 {
@@ -58,7 +59,7 @@ p {
   float: left;
   margin: 10px;
   border: 1px solid white;
-  height: 450px;
+  height: 500px;
 }
 .location>p {
   color:black;
@@ -114,4 +115,15 @@ input[type=number] {
 
 button:hover {
   background-color: salmon;
+}
+
+#about {
+  background-color: white;
+  font-family: helvetica;
+  font-size: 30px;
+  border: 5px dotted salmon;
+}
+
+#about>p {
+  color: black;
 }
