@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/sales.css" />
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <meta charset="utf-8">
+    <title>Sales</title>
+  </head>
+  <body>
+
+    <img src="images/salmon.png" />
+
+    <h1>Sales</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="html/hours.html">Hours</a></li>
+        <li><a href="html/contact.html">Contact Info</a></li>
+        <li><a href="html/locations.html">Locations</a></li>
+        <li><a href="sales.html">Sales</a></li>
+      </ul>
+    </nav>
+
+<form id="new-store">
+  <fieldset>
+
+    <legend>New Store Input</legend>
+
+    <label for="getStoreName">Store Name:</label>
+    <input name="getStoreName" type="text" />
+
+    <label for="getMinCustomers">Minimum Customers Per Hour:</label>
+    <input name="getMinCustomers" type="number" />
+
+    <label for="getMaxCustomers">Maximum Customers Per Hour:</label>
+    <input name="getMaxCustomers" type="number" />
+
+    <label for="getAvgSale">Average Cookies Per Sale:</label>
+    <input name="getAvgSale" type="number" step="any" />
+
+    <button type="submit">Create New Store Location</button>
+
+  </fieldset>
+</form>
+
+    <table id="store">
+    </table>
+
+    <script src="app.js"></script>
+  </body>
+</html>
