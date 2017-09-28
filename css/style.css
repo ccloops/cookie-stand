@@ -21,6 +21,10 @@ li {
   font-size: 30px;
 }
 
+li:hover {
+  background-color: salmon;
+}
+
 img {
   padding: 2px;
   margin: 2%;
