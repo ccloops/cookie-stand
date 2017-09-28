@@ -1,7 +1,7 @@
 body {
   background-color: black;
   color: salmon;
-  font-family: 'Caveat',
+  font-family: 'Caveat';
 }
 
 img {
@@ -18,7 +18,17 @@ nav {
   text-align: center;
   margin: 20px;
 }
+/*
+li {
+  display: inline;
+  background-color: white;
+  padding: 2%;
+  font-size: 30px;
+}*/
 
+li:hover {
+  background-color: salmon;
+}
 li {
   display: inline;
   background-color: white;

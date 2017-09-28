@@ -3,9 +3,9 @@
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 var allStores = [];
 var storeTable = document.getElementById('store');
+var newCookieStore = document.getElementById('new-store');
 var allStoreTotals = [];
 var totalTurtle = 0;
-var newCookieStore = document.getElementById('new-store');
 
 function Store(storeName, minCustomers, maxCustomers, avgSale) {
   this.storeName = storeName;
@@ -53,6 +53,8 @@ Store.prototype.render = function() {
 
   storeTable.appendChild(trEl);
 };
+
+//instantiating store objects
 
 new Store('1st and Pike', 23, 65, 6.3);
 new Store('SeaTac Airport', 3, 24, 1.2);
@@ -105,9 +107,10 @@ function totalTableSum() {
   }
 }
 
+//rendering table footer row
+
 function makeFooterRow() {
   var trEl = document.createElement('tr');
-  trEl.setAttribute('id', 'footer');
 
   var thEl = document.createElement('th');
   thEl.textContent = 'All Stores Hourly Totals';
@@ -127,34 +130,52 @@ function makeFooterRow() {
   storeTable.appendChild(trEl);
 }
 
-function handleNewStoreSubmit(event) {
-  allStoreTotals = [];
-  event.preventDefault();
-  var footerRow = document.getElementById('footer');
-  if (!event.target.getStoreName.value || !event.target.getMinCustomers.value || !event.target.getMaxCustomers.value || !event.target.getAvgSale.value) {
-    return alert('Please fill in all form fields!');
-  }
-
+function callFooterFunctions() {
+  columnSum();
+  totalTableSum();
+  makeFooterRow();
+}
+function renderAllInnerData() {
   var newStoreName = event.target.getStoreName.value;
   var newMinCustomers = parseInt(event.target.getMinCustomers.value);
   var newMaxCustomers = parseInt(event.target.getMaxCustomers.value);
   var newAvgSale = parseInt(event.target.getAvgSale.value);
-  new Store(newStoreName, newMinCustomers, newMaxCustomers, newAvgSale);
+  var counter = 0;
 
-  event.target.getStoreName.value = null;
-  event.target.getMinCustomers.value = null;
-  event.target.getMaxCustomers.value = null;
-  event.target.getAvgSale.value = null;
+  for(var i = 0; i < allStores.length; i++) {
+    if(newStoreName === allStores[i].storeName) {
+      allStores[i].minCustomers = parseInt(newMinCustomers);
+      allStores[i].maxCustomers = parseInt(newMaxCustomers);
+      allStores[i].avgSale = parseInt(newAvgSale);
+      allStores[i].dailySales = 0;
+      allStores[i].hourlySales = [];
+      allStores[i].hourlyTransactions();
+      allStores[i].dailyTransactions();
+      counter++;
+    }
+  }
+  if(counter === 0) {
+    new Store(newStoreName, parseInt(newMinCustomers), parseInt(newMaxCustomers), parseInt(newAvgSale));
+    allStores[allStores.length - 1].hourlyTransactions();
+    allStores[allStores.length - 1].dailyTransactions();
+  }
+  for(var j = 0; j < allStores.length; j++) {
+    allStores[j].render();
+  }
+}
 
-  storeTable.removeChild(footerRow);
+function handleNewStoreSubmit(event) {
+  event.preventDefault();
+  allStoreTotals = [];
+  if (!event.target.getStoreName.value || !event.target.getMinCustomers.value || !event.target.getMaxCustomers.value || !event.target.getAvgSale.value) {
+    return alert('Please fill in all form fields!');
+  }
 
-  allStores[allStores.length - 1].hourlyTransactions();
-  allStores[allStores.length - 1].dailyTransactions();
-  allStores[allStores.length - 1].render();
+  storeTable.innerHTML = '';
 
-  columnSum();
-  totalTableSum();
-  makeFooterRow();
+  makeHeaderRow();
+  renderAllInnerData();
+  callFooterFunctions();
 
 }
 
@@ -164,8 +185,4 @@ makeHeaderRow();
 
 innerRows();
 
-columnSum();
-
-totalTableSum();
-
-makeFooterRow();
+callFooterFunctions();
