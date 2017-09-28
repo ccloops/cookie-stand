@@ -82,9 +82,14 @@ a:visited {
   text-decoration: none;
 }
 
+form {
+  font-family: Arial;
+}
+
 table {
 	border: 10px solid white;
   margin: 5px;
+  font-family: Arial;
 }
 
 td {
