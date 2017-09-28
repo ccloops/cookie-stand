@@ -50,3 +50,10 @@ p {
   font-size: 25px;
   color: black;
 }
+
+.location {
+  width: 300px;
+  float: left;
+  margin: 10px;
+  border: 1px solid white;
+}
