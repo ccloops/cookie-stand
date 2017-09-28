@@ -35,7 +35,6 @@ Store.prototype.dailyTransactions = function() {
 };
 
 Store.prototype.render = function() {
-
   var trEl = document.createElement('tr');
 
   var thEl = document.createElement('th');

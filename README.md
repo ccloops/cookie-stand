@@ -1,4 +1,4 @@
 # cookie-stand
 # 201 Cookie Stand Project Week 2
 
-### Completed Sales Table for sales.html page. Completed stretch goal and added column totals to the table as well as an overall total. Also added styling to the sales.html page, which has its own separate sales.css file.
+### Salmon Cookies Stand Project now has a form input field on the sales table that allows users to add a new store with the following values: "Store Name, Minimum Customers Per Hour, Maximum Customers Per Hour, and Average Cookies Per Sale."
