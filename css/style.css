@@ -3,6 +3,7 @@ body {
   background-color: black;
   text-align: center;
   font-family: Caveat;
+  margin: 0 auto;
 }
 
 h1 {
@@ -16,7 +17,7 @@ nav {
 
 li {
   display: inline;
-  background-color: white;
+  background-color: cornsilk;
   padding: 2%;
   font-size: 30px;
 }
@@ -48,5 +49,81 @@ p {
 
 #secret {
   font-size: 25px;
+  color: black;
+}
+
+.location {
+  background-color: white;
+  color: black;
+  width: 300px;
+  float: left;
+  margin: 10px;
+  border: 1px solid white;
+  height: 500px;
+}
+.location>p {
+  color:black;
+}
+
+.merch {
+border: 1px solid white;
+width: 450px;
+float: left;
+margin: 10px;
+height: 350px;
+}
+
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+form {
+  font-family: Arial;
+}
+
+table {
+	border: 10px solid white;
+  margin: 5px;
+  font-family: Arial;
+}
+
+td {
+	padding: 10px;
+	border-radius: 70%;
+  border: 1px solid black;
+  background: white;
+  text-align: center;
+}
+
+th {
+	background-color: salmon;
+	color: black;
+  padding: 10px;
+  border-radius: 70%;
+}
+
+input[type=number] {
+  width: 50px;
+
+}
+
+button:hover {
+  background-color: salmon;
+}
+
+#about {
+  background-color: white;
+  font-family: helvetica;
+  font-size: 30px;
+  border: 5px dotted salmon;
+}
+
+#about>p {
   color: black;
 }
