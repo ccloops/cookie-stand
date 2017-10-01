@@ -117,7 +117,6 @@ StaffingGrid.handleForm = function(event) {
 
       StaffingGrid.all[i].calcEmployeesPerHour();
       clearForm();
-      // StaffingGrid.renderTable();
       return;
     }
   }
