@@ -23,7 +23,7 @@ Store.prototype.customerPerHour = function() {
 Store.prototype.employeesPerHour = function() {
   for(var i = 0; i < hours.length; i++) {
     var numberOfEmployees = this.customerPerHour();
-    this.hourlyEmployees.push(Math.round((numberOfEmployees / 20) + 2 ));
+    this.hourlyEmployees.push(Math.round((numberOfEmployees % 20) + 2 ));
   }
 };
 
