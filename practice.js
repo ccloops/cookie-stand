@@ -42,7 +42,7 @@ Store.prototype.render = function() {
 
   for(var i in this.hourlyEmployees) {
     var tdEl = document.createElement('td');
-    tdEl.textContent = this.hourlyEmployees[i];
+    tdEl.textContent = this.hourlyEmployees[i] + ' employees';
     trEl.appendChild(tdEl);
   }
 
