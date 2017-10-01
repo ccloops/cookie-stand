@@ -3,8 +3,8 @@
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 var allStores = [];
 var storeTable = document.getElementById('staff');
-// var totalTurtle = 0;
-// var employeesPerHour = [];
+var allStoreTotals = [];
+var totalTurtle = 0;
 
 
 function Store(storeName, minCustomers, maxCustomers) {
@@ -67,22 +67,6 @@ function innerRows() {
   }
 }
 
-//
-// function getCustomerPerHour () {
-//   if(customerPerHour[i] < 20) {
-//     employeesPerHour = 1;
-//   }
-//   if(20 < customerPerHour[i] < 40) {
-//     employeesPerHour = 2;
-//   }
-//
-//   if(40 < customerPerHour[i] < 60) {
-//     employeesPerHour = 3;
-//   }
-// }
-//
-// getCustomerPerHour();
-
 function makeHeaderRow() {
   var trEl = document.createElement('tr');
 
@@ -103,5 +87,51 @@ function makeHeaderRow() {
   storeTable.appendChild(trEl);
 }
 
+function columnSum() {
+  for(var i = 0; i < hours.length; i++) {
+    var storeTotal = 0;
+    for(var j = 0; j < allStores.length; j++){
+      storeTotal += allStores[j].hourlyEmployees[i];
+    }
+    allStoreTotals.push(storeTotal);
+  }
+}
+
+function totalTableSum() {
+  totalTurtle = 0;
+  for (var k in allStoreTotals) {
+    totalTurtle += allStoreTotals[k];
+  }
+}
+
+//rendering table footer row
+
+function makeFooterRow() {
+  var trEl = document.createElement('tr');
+
+  var thEl = document.createElement('th');
+  thEl.textContent = 'All Stores Employee Totals';
+  trEl.appendChild(thEl);
+
+  for(var i in hours) {
+    thEl = document.createElement('th');
+    thEl.textContent = allStoreTotals[i];
+    trEl.appendChild(thEl);
+  }
+
+  thEl = document.createElement('th');
+  thEl.textContent = totalTurtle;
+  trEl.appendChild(thEl);
+
+  storeTable.appendChild(trEl);
+}
+
+function callFooterFunctions() {
+  columnSum();
+  totalTableSum();
+  makeFooterRow();
+}
+
 makeHeaderRow();
 innerRows();
+callFooterFunctions();
